@@ -1,15 +1,14 @@
 import React from "react";
-
+import Loader from "../Loader/loader"
 import {useState, useEffect} from 'react';
 
 import { useFetch } from '../../utils/useFetch'
 
-import { JOKES_URL } from "../../variables";
-import { GITHUB_USERS_URL } from "../../variables";
+
 
 import { HEROKU_JOKES } from "../../variables";
 
-import { NEW_JOKES } from "../../variables";
+
  
 import "./app.scss";
 
@@ -30,22 +29,11 @@ const App = () => {
 
     return(
         <div className="app">
-            <h1>App</h1>
-            <button onClick={()=>setPath("/jokes/programming")}>
-                programming
-            </button>
-            <button onClick={()=>setPath("/jokes/general")}>
-                general
-            </button>
-            <button onClick={()=>setPath("/jokes/knock-knock")}>
-                knock-knock
-            </button>
-            <button onClick={()=>setPath("/random_ten")}>
-                random ten
-            </button>
+            <h1>Hello</h1>
+            {/* <Loader/> */}
             <ul>
                 {   
-                    loading ? <h1>loading</h1> : 
+                    loading ? <Loader/> : 
                     data.map((item, i)=>{
                         
 

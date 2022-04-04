@@ -1,18 +1,30 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-  mode: 'production',
-  entry: './src/index.js',
+  //mode: 'production',
+  entry: {
+    main: path.resolve(__dirname,'./src/index.js')
+  },
+  devServer: {
+    hot: true,
+    static: {
+      directory: path.join(__dirname, 'build'),
+    },
+    port: 8081,
+    open: true
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Hot Module Replacement',
+    }),
+  ],
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/build/',
     filename: 'bundle.js',
-  },
-  devServer: {
-    historyApiFallback: true,
-    port: 8081,
-    open: true
   },
   module: {
     rules:[
@@ -30,6 +42,14 @@ module.exports = {
             'style-loader',
             'css-loader',
             'sass-loader'
+          ],
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
           ],
         },
       ]
