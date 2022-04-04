@@ -40,6 +40,9 @@ const App = () => {
             <button onClick={()=>setPath("/jokes/knock-knock")}>
                 knock-knock
             </button>
+            <button onClick={()=>setPath("/random_ten")}>
+                random ten
+            </button>
             <ul>
                 {   
                     loading ? <h1>loading</h1> : 
