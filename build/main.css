@@ -1,2 +1,3 @@
-body{background-color:gray}.testDiv{color:green}
-.app{background-color:green}
+img{width:100px;animation:3s rotation infinite}@keyframes rotation{0%{transform:rotate(0deg) scale(0.5)}25%{transform:rotate(180deg) scale(1)}50%{transform:rotate(-180deg) scale(0.5)}75%{transform:rotate(360deg) scale(1)}100%{transform:rotate(-360deg) scale(0.5)}}
+.app{background-color:#ff0}
+body{background-color:gray;padding:0;margin:0}.testDiv{color:red}
