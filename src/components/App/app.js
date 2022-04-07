@@ -1,15 +1,20 @@
-import React from "react";
-import Loader from "../Loader/loader"
-import {useState, useEffect} from 'react';
+import React,{useState, useEffect} from "react";
 
+import Loader from "../Loader/loader"
+import JokesList from "../Jokes-list/jokesList"
+
+
+
+import DataFetching from "../../dataFetch";
 import { useFetch } from '../../utils/useFetch'
 
+import reducer from '../../reducer';
+
+import {Provider} from 'react-redux';
+
+import {createStore} from "redux";
 
 
-import { HEROKU_JOKES } from "../../variables";
-
-
- 
 import "./app.scss";
 
 
@@ -17,38 +22,34 @@ import "./app.scss";
 
 
 
+
+
+
+
+
+
+
+const store = createStore(reducer);
+
+
+
 const App = () => { 
 
-
-    const [path, setPath] = useState('/jokes')
-    const {loading, data} = useFetch(HEROKU_JOKES, path)
-    console.log(loading, data)
+    console.log('state',store.getState())
 
     
-    
-
     return(
-        <div className="app">
-            <h1>Hello</h1>
-            {/* <Loader/> */}
-            <ul>
-                {   
-                    loading ? <Loader/> : 
-                    data.map((item, i)=>{
-                        
+        <Provider store={store}>
+            <div className="app">
+                <h1>Hello</h1>
+                <Loader/>
+                <DataFetching/>
+                <JokesList/>
+            </div>
 
-                        return(
-                            <li key={i}>
-                                <p>{item.setup}</p> 
-                                {/* <p>{showPunch ? item.punchline : ''}</p> */}
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+        </Provider>
             
 
-        </div>
     )
 };
 

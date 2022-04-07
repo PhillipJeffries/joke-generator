@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-export const useFetch = (url, path) => {
+export const useFetch = (url) => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([])
 
     const getData = async () => {
-        let response = await fetch(`${url}${path}`);
+        let response = await fetch(url);
         //console.log('headers', response)
         if(response.ok){
             // alert(response.headers.get('Content-Type'))
@@ -21,6 +21,6 @@ export const useFetch = (url, path) => {
 
     useEffect(() => {
         getData()
-    }, [path]);
+    }, []);
     return {loading, data}
 };
