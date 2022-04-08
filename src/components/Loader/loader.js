@@ -26,7 +26,7 @@ const Loader = () => {
 
                 setScale(e.pageY/100)
             }
-            setPosition(e.pageX)
+            setPosition(e.pageX - document.body.clientWidth/2)
         });
         return () => {
             console.log('cleanup');

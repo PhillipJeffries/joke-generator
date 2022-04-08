@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 
 import './randomJokesButton.scss'
 
-import { fetchRandomTen } from "../../redux/reducer";
+import { fetchRandomTen } from "../../redux/reducers/fetchReducer";
 
+console.log(fetchRandomTen)
 
 const RandomJokesButton = ({dispatch}) => {
     return(
@@ -13,6 +14,8 @@ const RandomJokesButton = ({dispatch}) => {
     )
 
 };
+
+
 
 
 export default connect(null)(RandomJokesButton)

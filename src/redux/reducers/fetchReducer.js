@@ -47,7 +47,7 @@ export const fetchRandomTen = async (dispatch) => {
 
 
 
-const reducer = (state = initialState, action) => {
+const fetchReducer = (state = initialState, action) => {
     switch(action.type){
         case 'TEST':
             console.log("test")
@@ -72,6 +72,11 @@ const reducer = (state = initialState, action) => {
                 error: action.payload,
                 randomTen: []
             }
+        case 'REMOVE':
+            console.log('remove')
+            return {
+                ...state, randomTen: state.randomTen.filter(joke => joke.id !== action.payload)
+            }
         default:
             return state
     }
@@ -83,4 +88,4 @@ const reducer = (state = initialState, action) => {
 
 
 
-export default reducer
+export default fetchReducer

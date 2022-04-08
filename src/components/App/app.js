@@ -4,6 +4,7 @@ import Loader from "../Loader/loader"
 import JokesList from "../Jokes-list/jokesList"
 import RandomJokesButton from "../Random-jokes-button/randomJokesButton";
 import Categories from '../Categories/categories';
+import AddedJokesList from '../AddedJokesList/addedJokesList';
 
 
 
@@ -22,14 +23,16 @@ const App = ({loading}) => {
 
             <div className="app">
                 <h1>Hello</h1>
-                {
+                {/* {
                     loading ?
                     <Loader/>:
                     null
-                }
-                <Categories/>
+                } */}
+                {/* <Categories/> */}
                 <RandomJokesButton/>
                 <JokesList/>
+                <AddedJokesList/>
+                <Loader/>
             </div>      
 
     )
