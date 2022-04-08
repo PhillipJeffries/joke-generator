@@ -1,56 +1,44 @@
 import React,{useState, useEffect} from "react";
-
+import {connect} from 'react-redux';
 import Loader from "../Loader/loader"
 import JokesList from "../Jokes-list/jokesList"
+import RandomJokesButton from "../Random-jokes-button/randomJokesButton";
+import Categories from '../Categories/categories';
 
 
-
-import DataFetching from "../../dataFetch";
-import { useFetch } from '../../utils/useFetch'
-
-import reducer from '../../reducer';
-
-import {Provider} from 'react-redux';
-
-import {createStore} from "redux";
 
 
 import "./app.scss";
+import categories from "../Categories/categories";
 
 
 
 
+const App = ({loading}) => { 
 
-
-
-
-
-
-
-
-
-const store = createStore(reducer);
-
-
-
-const App = () => { 
-
-    console.log('state',store.getState())
 
     
     return(
-        <Provider store={store}>
+
             <div className="app">
                 <h1>Hello</h1>
-                <Loader/>
-                <DataFetching/>
+                {
+                    loading ?
+                    <Loader/>:
+                    null
+                }
+                <Categories/>
+                <RandomJokesButton/>
                 <JokesList/>
-            </div>
-
-        </Provider>
-            
+            </div>      
 
     )
 };
 
-export default App;
+const mapStateToProps = state => {
+    console.log(state)
+    const {loading} = state
+    return {loading}
+}
+
+export default connect(mapStateToProps)(App);
