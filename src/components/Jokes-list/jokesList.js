@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 
 import {connect} from 'react-redux';
 
-//import {fetchRandomTen} from '../../redux/reducers/';
+import {fetchRandomTen} from '../../redux/reducers/';
 
 import JokeItem from "../JokeItem/jokeItem";
 
@@ -28,7 +28,7 @@ const JokesList = ({randomTen, dispatch}) => {
                         return(
                     
                                 
-                                <JokeItem item={item}/>
+                                <JokeItem className={''} item={item}/>
                         
                         )
                     }):

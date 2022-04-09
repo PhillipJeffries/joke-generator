@@ -11,7 +11,7 @@ if(localStorage.jokes){
 
 const clientReducer = (state = initialState, action) => {
     switch(action.type){
-        case 'TEST':
+        case 'ADD_JOKE':
             console.log("test", action.payload)
             let localJokes = [...state.addedJokes, action.payload]
             window.localStorage.setItem('jokes', JSON.stringify(localJokes))
@@ -21,8 +21,10 @@ const clientReducer = (state = initialState, action) => {
             }
         case 'REMOVE':
             console.log('remove')
+            let newAddedJokes = state.addedJokes.filter(joke => joke.id !== action.payload);
+            window.localStorage.setItem('jokes', JSON.stringify(newAddedJokes))
             return {
-                ...state, addedJokes: state.addedJokes.filter(joke => joke.id !== action.payload)
+                ...state, addedJokes: newAddedJokes
             }
         default:
             return state

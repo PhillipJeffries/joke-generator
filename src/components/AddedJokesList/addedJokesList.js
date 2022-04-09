@@ -24,7 +24,7 @@ const AddedJokesList = ({addedJokes}) => {
             {
                 addedJokes.map((item)=>{
                     return(
-                        <JokeItem item={item}/>
+                        <JokeItem className={"added-jokes"} item={item}/>
                     )
                 })
             }

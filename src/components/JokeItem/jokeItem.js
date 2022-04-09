@@ -7,7 +7,7 @@ import './jokeItem.scss';
 
 
 
-const JokeItem = ({item, dispatch}) => {
+const JokeItem = ({item, dispatch, className}) => {
 
     const [showPunch, setShowPunch] = useState(false)
 
@@ -16,7 +16,8 @@ const JokeItem = ({item, dispatch}) => {
     }
 
     return(
-        <div key={item.id}>
+        <div className={`joke-item ${className}`} key={item.id}>
+            <button className="add-button" onClick={()=>{dispatch({type:'ADD_JOKE', payload: item})}}>add</button>
             <div>
                 <div>{item.setup}</div>
                 {
@@ -24,10 +25,13 @@ const JokeItem = ({item, dispatch}) => {
                 <div>{item.punchline}</div> :
                 null
                 }
-                <button onClick={show}>so what?</button>
+                <button onClick={show}>{showPunch ? "thank you" : "so what?"}</button>
             </div>
-            <button onClick={()=>{dispatch({type:'TEST', payload: item})}}>add</button>
-            <button onClick={()=>{dispatch({type:'REMOVE', payload: item.id})}}>remove</button>
+            <div>
+                <button className="add-button" onClick={()=>{dispatch({type:'ADD_JOKE', payload: item})}}>add</button>
+                <button className="delete-button" onClick={()=>{dispatch({type:'REMOVE', payload: item.id})}}>remove</button>
+
+            </div>
         </div>
     )
 

@@ -32,7 +32,7 @@ const App = ({loading}) => {
                 <RandomJokesButton/>
                 <JokesList/>
                 <AddedJokesList/>
-                <Loader/>
+                {/* <Loader/> */}
             </div>      
 
     )

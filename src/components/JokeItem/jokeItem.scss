@@ -1,0 +1,17 @@
+.joke-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.origin-jokes {
+
+}
+
+
+.added-jokes {
+    .add-button{
+        display: none;
+    }
+}
+
