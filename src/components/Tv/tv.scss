@@ -1,0 +1,89 @@
+$tvDisplayWidth: 70vw;
+$buttonsContainerWidth: 4vw;
+
+.tv-container{
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    .tv-box{
+        position: absolute;
+        width: 100%;
+    }
+
+    .tv-display-container{
+        position: absolute;
+        left: 6vw;
+        top: 7vw;
+        //padding: 5px;
+        width: $tvDisplayWidth;
+        height: 60vw;
+        overflow: hidden;
+        
+        box-sizing: border-box;
+        .tv-display{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .tv-text-container{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2vw;
+            overflow: auto;
+            // border: solid 2px black;
+            border-radius: 20px;
+            top: 3vw;
+            left: 2vw;
+            width: 92%;
+            height: 75%;
+            box-sizing: border-box;
+        }
+    }
+    .tv-buttons-container{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5vw;
+        right: 12.5vw;
+        top: 25vw;
+        width: $buttonsContainerWidth;
+        .tv-button{
+            width: 100%;
+            height: $buttonsContainerWidth;
+            border: none;
+            border-radius: 50%;
+            background-color: #dd1414;
+            filter: brightness(.5);
+            box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.25), inset -5px 5px 5px rgba(255, 255, 255, 0.31), inset 1px -1px 1px rgba(0, 0, 0, 0.25);
+            &:hover{
+                box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.25), inset -3px 3px 3px rgba(255, 255, 255, 0.31), inset 1px -1px 1px rgba(0, 0, 0, 0.25);
+            }
+            &:active{
+                box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.25), inset -3px 3px 3px rgba(255, 255, 255, 0.31), inset 1px -1px 1px rgba(0, 0, 0, 0.25);
+            }
+        }
+        .tv-button-pushed{
+            filter: brightness(1);
+        }
+        .tv-random-button{
+            background-color: yellow;
+        }
+        .tv-my-list-button{
+            background-color: green;
+        }
+        .button-title{
+            color: rgb(250, 243, 202);
+            text-align: center;
+            width: 140%;
+        }
+    }
+    
+    
+}
+
+
+

@@ -7,34 +7,67 @@ import './jokeItem.scss';
 
 
 
-const JokeItem = ({item, dispatch, className}) => {
+const JokeItem = ({type="random", item, dispatch}) => {
 
     const [showPunch, setShowPunch] = useState(false)
 
+    const [added, setAdded] = useState(false)
+
     const show = () =>{
         setShowPunch(!showPunch)
+    };
+
+    const addJokeToList = (item) => {
+        dispatch({type:'ADD_JOKE', payload: item});
+        setAdded(true);
+
     }
 
-    return(
-        <div className={`joke-item ${className}`} key={item.id}>
-            <button className="add-button" onClick={()=>{dispatch({type:'ADD_JOKE', payload: item})}}>add</button>
-            <div>
-                <div>{item.setup}</div>
-                {
-                    showPunch?
-                <div>{item.punchline}</div> :
-                null
-                }
-                <button onClick={show}>{showPunch ? "thank you" : "so what?"}</button>
+    if(type === "random"){
+        return(
+            <div className={`joke-item-container`} key={item.id}>
+                <div className="joke-item-flex">
+                    <div className="joke-item-content">
+                        <div>{item.setup}</div>
+                        {
+                            showPunch ?
+                        <div>{item.punchline}</div> :
+                        null
+                        }
+                    </div>
+                    <div>
+                        <button className={!added ? "joke-item-button add-button" : "joke-item-button add-button added"} onClick={added ? null : ()=>{addJokeToList(item)}}>add</button>
+        
+                    </div>
+                </div>
+                <button className="show-punch-button" onClick={show}>{showPunch ? "thank you" : "go on..."}</button>
+                
             </div>
-            <div>
-                <button className="add-button" onClick={()=>{dispatch({type:'ADD_JOKE', payload: item})}}>add</button>
-                <button className="delete-button" onClick={()=>{dispatch({type:'REMOVE', payload: item.id})}}>remove</button>
-
+        )
+    }
+    if(type="added"){
+        return(
+            <div className={`joke-item-container`} key={item.id}>
+                <div className="joke-item-flex">
+                    <div className="joke-item-content">
+                        <div>{item.setup}</div>
+                        {
+                            showPunch ?
+                        <div>{item.punchline}</div> :
+                        null
+                        }
+                    </div>
+                    <div>
+                        <button className="joke-item-button delete-button" onClick={()=>{dispatch({type:'REMOVE_ADDED', payload: item.id})}}>remove</button>
+                    </div>
+                </div>
+                    <button className="show-punch-button" onClick={show}>{showPunch ? "thank you" : "go on..."}</button>
             </div>
-        </div>
-    )
+        )
+    }
 
 }
+
+    
 
 export default connect(null)(JokeItem)

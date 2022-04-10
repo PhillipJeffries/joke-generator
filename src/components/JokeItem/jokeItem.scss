@@ -1,17 +1,42 @@
-.joke-item{
+.joke-item-container{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    //align-items: center;
+    width: 100%;
+    margin-bottom: 2vw;
+    .joke-item-flex{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        
+    }
+    .joke-item-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        //align-items: center;
+    }
+    .show-punch-button{
+        display: block;
+        border: none;
+        background-color: inherit;
+    }
 }
+
+.joke-item-button{
+    border: none;
+    background-color: inherit;
+}
+
 
 .origin-jokes {
 
 }
 
-
-.added-jokes {
-    .add-button{
-        display: none;
-    }
+.added{
+    background-color: green;
 }
+
+
 

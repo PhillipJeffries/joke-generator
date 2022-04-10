@@ -72,6 +72,10 @@ const fetchReducer = (state = initialState, action) => {
                 error: action.payload,
                 randomTen: []
             }
+        case 'RESET_RANDOM_TEN':
+            return {
+                ...state, randomTen: []
+            }
         case 'REMOVE':
             console.log('remove')
             return {

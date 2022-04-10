@@ -31,11 +31,32 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: [
-                  {
+                    {
                     loader: 'file-loader',
+                    },
+                ],
+            },
+            {
+                test: /\.(ttf|eot|woff|woff2|)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    },
+                },
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                  {
+                    loader: 'svg-url-loader',
+                    options: {
+                      limit: 10000,
+                    },
                   },
                 ],
-              },
+            },
         ]
     },
     plugins: [new MiniCssExtractPlugin()],

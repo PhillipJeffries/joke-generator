@@ -6,7 +6,7 @@ import {fetchRandomTen} from '../../redux/reducers/';
 
 import JokeItem from "../JokeItem/jokeItem";
 
-
+import './jokesList.scss'
 
 const JokesList = ({randomTen, dispatch}) => {
 
@@ -19,8 +19,8 @@ const JokesList = ({randomTen, dispatch}) => {
     console.log('state', randomTen)
 
     return(
-        <div>
-            <h1>Jokes</h1>
+        <div className="jokes-list-container">
+            <h1 className="jokes-list-title">jokes from internet</h1>
             <div>
                 {
                     state ?
@@ -28,7 +28,7 @@ const JokesList = ({randomTen, dispatch}) => {
                         return(
                     
                                 
-                                <JokeItem className={''} item={item}/>
+                                <JokeItem key={item.id} type="random" className={''} item={item}/>
                         
                         )
                     }):

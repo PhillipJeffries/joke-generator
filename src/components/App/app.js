@@ -6,6 +6,9 @@ import RandomJokesButton from "../Random-jokes-button/randomJokesButton";
 import Categories from '../Categories/categories';
 import AddedJokesList from '../AddedJokesList/addedJokesList';
 
+import tv from '../../assets/tv.svg'
+
+import Tv from '../Tv/tv'
 
 
 
@@ -15,33 +18,37 @@ import categories from "../Categories/categories";
 
 
 
-const App = ({loading}) => { 
+const App = ({loading, tvOn}) => { 
 
-
+    const [showAddedJokes, setShowAddedJokes] = useState(false)
+    
+    const displayToggleHandler = () => {
+        setShowAddedJokes(!showAddedJokes)
+    }
     
     return(
 
             <div className="app">
-                <h1>Hello</h1>
                 {/* {
                     loading ?
                     <Loader/>:
                     null
                 } */}
                 {/* <Categories/> */}
-                <RandomJokesButton/>
-                <JokesList/>
-                <AddedJokesList/>
+                {/* <RandomJokesButton/> */}
+                {/* <JokesList/> */}
                 {/* <Loader/> */}
+                <Tv showAddedJokes={showAddedJokes} click={displayToggleHandler}  children={tvOn && showAddedJokes ? <AddedJokesList/> : <JokesList/>}/>
+                
             </div>      
 
     )
 };
 
 const mapStateToProps = state => {
-    console.log(state)
-    const {loading} = state
-    return {loading}
+    console.log('app',state)
+    const {tvOn} = state.clientReducer
+    return {tvOn}
 }
 
 export default connect(mapStateToProps)(App);

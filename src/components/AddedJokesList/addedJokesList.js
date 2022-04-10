@@ -19,15 +19,18 @@ const AddedJokesList = ({addedJokes}) => {
     
 
     return(
-        <div>
-            <h2>added</h2>
-            {
-                addedJokes.map((item)=>{
-                    return(
-                        <JokeItem className={"added-jokes"} item={item}/>
-                    )
-                })
-            }
+        <div className="added-jokes-list-container">
+            <h2>my list of jokes</h2>
+            <div>
+                {
+                    addedJokes.map((item)=>{
+                        return(
+                            <JokeItem type="added" className={"added-jokes"} item={item}/>
+                        )
+                    })
+                }
+
+            </div>
         </div>
     )
 };

@@ -1,0 +1,9 @@
+.jokes-list-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .jokes-list-title{
+        margin-bottom: 2vw;
+    }
+    
+}
