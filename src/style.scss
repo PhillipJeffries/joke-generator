@@ -1,10 +1,19 @@
-//@import "./assets/fonts/fonts.scss";
+@import "./assets/fonts/fonts.scss";
 
+body * {
+    font-family: IndieFlower, sans-serif;
+    color: rgb(48, 48, 48);
+}
 
 body {
     font-family: IndieFlower, sans-serif;
     background-color: grey;
     padding: 0;
     margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: RubikPuddles, sans-serif;
+    color: rgb(39, 110, 10);
 }
 

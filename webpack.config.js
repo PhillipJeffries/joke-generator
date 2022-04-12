@@ -11,6 +11,7 @@ module.exports = {
         watchContentBase: true,
         open: true
     },
+    plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
             {
@@ -30,34 +31,16 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
-                    loader: 'file-loader',
-                    },
-                ],
+                type: 'asset/resource'
             },
             {
-                test: /\.(ttf|eot|woff|woff2|)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    },
-                },
+                test: /\.svg/,
+                type: 'asset/inline'
             },
             {
-                test: /\.svg$/,
-                use: [
-                  {
-                    loader: 'svg-url-loader',
-                    options: {
-                      limit: 10000,
-                    },
-                  },
-                ],
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
             },
         ]
     },
-    plugins: [new MiniCssExtractPlugin()],
 };
