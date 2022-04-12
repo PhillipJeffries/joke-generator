@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import { connect } from "react-redux";
 
 import tvContainer from '../../assets/tv/tvContainer.svg';
@@ -17,6 +17,14 @@ const Tv = ({children, click, showAddedJokes, tvOn, loading, dispatch}) => {
 
     //const [myListShow, setMyListShow] = useState(false);
 
+    const tvBox = useRef(null)
+
+    const [tvHeight, setTvHeght] = useState('')
+
+    useEffect(()=>{
+        console.log(tvBox.current.clientHeight)
+        setTvHeght(tvBox.current.clientHeight)
+    })
 
 
     const tvButtonOnHandler = () => {
@@ -35,8 +43,8 @@ const Tv = ({children, click, showAddedJokes, tvOn, loading, dispatch}) => {
 
 
     return (
-        <div className="tv-container">
-            <img className="tv-box" src={tvContainer} alt="tv"/>
+        <div className="tv-container" style={{height: `${tvHeight}px`}}>
+            <img ref={tvBox} className="tv-box" src={tvContainer} alt="tv" />
             <div className="tv-display-container">
                 <img className="tv-display" src={tvOn ? displayOn : displayOff} alt="display off"/>
                 <div className="tv-text-container">
@@ -44,16 +52,25 @@ const Tv = ({children, click, showAddedJokes, tvOn, loading, dispatch}) => {
                 </div>
             </div>
             <div className="tv-buttons-container">
-                <button className={tvOn ? "tv-button tv-button-pushed" : "tv-button"} onClick={tvButtonOnHandler}></button>
-                <div className="button-title">on/off</div>
-                <button className={tvOn ? "tv-button tv-random-button tv-button-pushed" : "tv-button tv-random-button"} onClick={ ()=>{!tvOn ? null : fetchRandomTen(dispatch)}}></button>
-                <div className="button-title">random</div>
-                <button className={tvOn && showAddedJokes? "tv-button tv-my-list-button tv-button-pushed" : "tv-button tv-my-list-button"} onClick={!tvOn ? null : click}></button>
-                <div className="button-title">my list</div>
+                <div className="tv-button-wrapper">
+                    <button className={tvOn ? "tv-button tv-button-pushed" : "tv-button"} onClick={tvButtonOnHandler}></button>
+                    <div className="button-title">on/off</div>
+                </div>
+                <div className="tv-button-wrapper">
+                    <button className={tvOn ? "tv-button tv-random-button tv-button-pushed" : "tv-button tv-random-button"} onClick={ ()=>{!tvOn ? null : fetchRandomTen(dispatch)}}></button>
+                    <div className="button-title">random</div>
+                </div>
+                <div className="tv-button-wrapper">
+                    <button className={tvOn && showAddedJokes? "tv-button tv-my-list-button tv-button-pushed" : "tv-button tv-my-list-button"} onClick={!tvOn ? null : click}></button>
+                    <div className="button-title">my list</div>
+                </div>
             </div>
         </div>
     )
 }
+                    
+
+                    
 
 const mapStateToProps = (state) => {
     console.log('tv', state)
