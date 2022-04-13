@@ -56,15 +56,20 @@ $buttonsContainerWidth: 4%;
         right: 12.5%;
         top: 35%;
         //width: 4%;
-        height: 30%;
+        //height: 30%;
         //border: 1px solid black;
-        @include phone {
+        @include phone{
             flex-direction: row;
             right: 50%;
             transform: translateX(50%);
-            top: 220px;
+            top: 92%;
+            padding: 5px;
+            background-color: saddlebrown;
+            border-radius: 15px;
+            border: rgb(82, 43, 16) solid 2px;
         }
         .tv-button-wrapper{
+            position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -91,6 +96,10 @@ $buttonsContainerWidth: 4%;
                 @include desktop-min {
                     width: 35px;
                     height: 35px;
+                }
+                @include tablet {
+                    width: 25px;
+                    height: 25px;
                 }
                 @include phone {
                     width: 20px;

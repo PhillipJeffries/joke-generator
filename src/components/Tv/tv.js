@@ -18,6 +18,8 @@ const Tv = ({children, click, showAddedJokes, tvOn, loading, dispatch}) => {
 
     const [tvHeight, setTvHeght] = useState('')
 
+    console.log(requestAnimationFrame)
+
     useEffect(()=>{
         setTvHeght(tvBox.current.clientHeight)
     })
