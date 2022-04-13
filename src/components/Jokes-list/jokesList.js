@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 
 import {connect} from 'react-redux';
 
-import {fetchRandomTen} from '../../redux/reducers/';
 
 import JokeItem from "../JokeItem/jokeItem";
 
@@ -16,7 +15,6 @@ const JokesList = ({randomTen, dispatch}) => {
         setState(randomTen)
     }, [randomTen]);
     
-    console.log('state', randomTen)
 
     return(
         <div className="jokes-list-container">
@@ -41,7 +39,6 @@ const JokesList = ({randomTen, dispatch}) => {
 
 const mapStateToProps = store => {
     const {randomTen} = store.fetchReducer
-    console.log(randomTen)
     return {randomTen}
 }
 

@@ -13,16 +13,12 @@ import { fetchRandomTen } from "../../redux/reducers/fetchReducer";
 import './tv.scss';
 
 const Tv = ({children, click, showAddedJokes, tvOn, loading, dispatch}) => {
-    //const [tvOn, setTvOn] = useState(false);
-
-    //const [myListShow, setMyListShow] = useState(false);
 
     const tvBox = useRef(null)
 
     const [tvHeight, setTvHeght] = useState('')
 
     useEffect(()=>{
-        console.log(tvBox.current.clientHeight)
         setTvHeght(tvBox.current.clientHeight)
     })
 
@@ -73,7 +69,6 @@ const Tv = ({children, click, showAddedJokes, tvOn, loading, dispatch}) => {
                     
 
 const mapStateToProps = (state) => {
-    console.log('tv', state)
     const {tvOn} = state.clientReducer
     const {loading} = state.fetchReducer
     return {tvOn, loading}

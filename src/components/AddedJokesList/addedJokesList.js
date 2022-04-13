@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {connect} from 'react-redux';
-import jokesList from "../Jokes-list/jokesList";
 
 import JokeItem from "../JokeItem/jokeItem";
 
@@ -8,15 +7,7 @@ import './addedJokesList.scss';
 
 
 const AddedJokesList = ({addedJokes}) => {
-    // const [jokesList, setJokesList] = useState([]);
-
-    // useEffect(()=>{
-    //     setJokesList(addedJokes)
-    // },[addedJokes])
-
-    // console.log(jokesList)
-
-    
+     
 
     return(
         <div className="added-jokes-list-container">
