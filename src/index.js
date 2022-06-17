@@ -9,7 +9,7 @@ import './style.scss'
 
 const appElement = document.getElementById('root');
 
-
+console.log("hi")
 
 ReactDOM.render(
 <Provider store={store}>
